@@ -1,5 +1,19 @@
 {
+  "name": "architecture-d-interieur",
+  "description": "A visualisation tool for applicative design",
+  "version": "1.0.0",
+  "author": "Vincent Deleplanque",
   "scripts": {
     "test": "jest"
+  },
+  "dependencies": {
+    "fs-extra": "^8.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "*",
+    "@babel/preset-env": "*",
+    "@types/jest": "^24.0.17",
+    "babel-jest": "*",
+    "jest": "^24.8.0"
   }
 }
