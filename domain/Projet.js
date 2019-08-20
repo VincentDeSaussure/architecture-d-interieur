@@ -1,4 +1,4 @@
-class Directory {
+class Projet {
 
   constructor(path, fileReaderService, restrictionList) {
     this.path = __dirname + path;
@@ -25,10 +25,6 @@ class Directory {
     const restrictions = this.getRestrictions();
     return this.getFiles().filter(file => restrictions.includes(file) == false);
   }
-
-  start() {
-    return this.getFilesConsideringGitIgnoreRestrictions();
-  }
 }
 
-module.exports = Directory;
+module.exports = Projet;

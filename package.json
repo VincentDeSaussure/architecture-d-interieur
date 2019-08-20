@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "author": "Vincent Deleplanque",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node app.js"
   },
   "dependencies": {
     "fs-extra": "^8.1.0"

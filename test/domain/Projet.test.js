@@ -1,16 +1,16 @@
 const fs = require('fs-extra');
-const restrictionList = require('../model/restrictionList');
-const Directory = require('../domain/Directory');
+const restrictionList = require('../../model/restrictionList');
+const Projet = require('../../domain/Projet');
 
 describe('test fs library', () => {
   it('should return the file in a dirname', () => {
     // given
     const expectedFiles = ["directory-with-gitignore", "file1.js"];
     const path = '/../test/directory-for-test';
-    const directory1 = new Directory(path, fs, restrictionList);
+    const projet1 = new Projet(path, fs, restrictionList);
 
     // when
-    const result = directory1.getFiles();
+    const result = projet1.getFiles();
 
     // then
     expect(result).toEqual(expectedFiles);
@@ -20,10 +20,10 @@ describe('test fs library', () => {
     it('should return true when .gitignore exist', () => {
       // given
       const path = '/../test/directory-for-test/directory-with-gitignore';
-      const directoryWithGitIgnore = new Directory(path, fs, restrictionList);
+      const projetWithGitIgnore = new Projet(path, fs, restrictionList);
 
       // when
-      const result = directoryWithGitIgnore.hasGitIgnore();
+      const result = projetWithGitIgnore.hasGitIgnore();
 
       // then
       expect(result).toEqual(true);
@@ -32,7 +32,7 @@ describe('test fs library', () => {
     it('should return false when .gitignore is absent', () => {
       // given
       const path = '/../test/directory-for-test';
-      const directoryWithoutGitIgnore = new Directory(path, fs, restrictionList);
+      const directoryWithoutGitIgnore = new Projet(path, fs, restrictionList);
 
       // when
       const result = directoryWithoutGitIgnore.hasGitIgnore();
@@ -49,10 +49,10 @@ describe('test fs library', () => {
         // given
         const expectedRestrictions = ['node_modules_stub/', '.git', '.gitignore'];
         const path = '/../test/directory-for-test/directory-with-gitignore';
-        const directoryWithGitIgnore = new Directory(path, fs, restrictionList);
+        const projetWithGitIgnore = new Projet(path, fs, restrictionList);
 
         // when
-        const result = directoryWithGitIgnore.getRestrictions();
+        const result = projetWithGitIgnore.getRestrictions();
 
         // then
         expect(result).toEqual(expectedRestrictions);
@@ -63,10 +63,10 @@ describe('test fs library', () => {
       // given
       const expectedFiles = ["file1.js", "node_modules_stub"];
       const path = '/../test/directory-for-test/directory-with-gitignore';
-      const directoryWithGitIgnore = new Directory(path, fs, restrictionList);
+      const projetWithGitIgnore = new Projet(path, fs, restrictionList);
 
       // when
-      const result = directoryWithGitIgnore.getFilesConsideringGitIgnoreRestrictions();
+      const result = projetWithGitIgnore.getFilesConsideringGitIgnoreRestrictions();
 
       // then
       expect(result).toEqual(expectedFiles);

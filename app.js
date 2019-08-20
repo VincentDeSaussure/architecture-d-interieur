@@ -1,8 +1,8 @@
 const fs = require('fs-extra');
 const restrictionList = require('./model/restrictionList');
-const Directory = require('./domain/Directory');
+const ExplorerUnProjet = require('./usecase/ExplorerUnProjet');
 
-const path = './';
-const directory = new Directory(path, fs, restrictionList);
+const path = '/../.';
+const explorerUnProjet = new ExplorerUnProjet(path, fs, restrictionList);
 
-console.log(directory.start());
+console.log(explorerUnProjet.execute());
