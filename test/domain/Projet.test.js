@@ -1,75 +1,22 @@
 const fs = require('fs-extra');
 const restrictionList = require('../../model/restrictionList');
+const typeDElement = require('../../model/typeDElement');
 const Projet = require('../../domain/Projet');
 
-describe('test fs library', () => {
-  it('should return the file in a dirname', () => {
-    // given
-    const expectedFiles = ["directory-with-gitignore", "file1.js"];
-    const path = '/../test/directory-for-test';
-    const projet1 = new Projet(path, fs, restrictionList);
-
-    // when
-    const result = projet1.getFiles();
-
-    // then
-    expect(result).toEqual(expectedFiles);
-  });
-
-  describe('hasGitIgnore', () => {
-    it('should return true when .gitignore exist', () => {
+describe('Projet', () => {
+  describe("explore", () => {
+    it("doit retourner une liste d'élément dont le type et le nom sont renseigné", () => {
       // given
-      const path = '/../test/directory-for-test/directory-with-gitignore';
-      const projetWithGitIgnore = new Projet(path, fs, restrictionList);
-
-      // when
-      const result = projetWithGitIgnore.hasGitIgnore();
-
-      // then
-      expect(result).toEqual(true);
-    });
-
-    it('should return false when .gitignore is absent', () => {
-      // given
+      const expectedFiles = ["directory-with-gitignore", "file1.js"];
       const path = '/../test/directory-for-test';
-      const directoryWithoutGitIgnore = new Projet(path, fs, restrictionList);
-
+      const projet1 = new Projet(path, fs, restrictionList);
       // when
-      const result = directoryWithoutGitIgnore.hasGitIgnore();
-
+      const result = projet1.explore();
       // then
-      expect(result).toEqual(false);
+      expect(result[0].name).toEqual(expectedFiles[0]);
+      expect(result[0].type).toEqual(typeDElement.DIRECTORY);
+      expect(result[1].name).toEqual(expectedFiles[1]);
+      expect(result[1].type).toEqual(typeDElement.FILE);
     });
-  });
-
-  describe('getFilesConsideringGitIgnoreRestriction', () => {
-
-    describe('getRestrictions', () => {
-      it('should add values from .gitignore to the initial restriction', () => {
-        // given
-        const expectedRestrictions = ['node_modules_stub/', '.git', '.gitignore'];
-        const path = '/../test/directory-for-test/directory-with-gitignore';
-        const projetWithGitIgnore = new Projet(path, fs, restrictionList);
-
-        // when
-        const result = projetWithGitIgnore.getRestrictions();
-
-        // then
-        expect(result).toEqual(expectedRestrictions);
-      });
-    });
-
-    it('should return the list of files filtered by restrictions', () => {
-      // given
-      const expectedFiles = ["file1.js", "node_modules_stub"];
-      const path = '/../test/directory-for-test/directory-with-gitignore';
-      const projetWithGitIgnore = new Projet(path, fs, restrictionList);
-
-      // when
-      const result = projetWithGitIgnore.getFilesConsideringGitIgnoreRestrictions();
-
-      // then
-      expect(result).toEqual(expectedFiles);
-    })
   });
 });
