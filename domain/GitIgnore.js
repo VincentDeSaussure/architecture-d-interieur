@@ -15,7 +15,7 @@ function extracterContenu(path, fileReaderSystem) {
 }
 
 function formateLePath(path) {
-  return __dirname + path + '/.gitignore';
+  return path + '/.gitignore';
 }
 
 module.exports = GitIgnore;

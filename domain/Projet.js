@@ -1,6 +1,5 @@
 const Restrictions = require('./Restrictions');
 const Element = require('./Element');
-const detecteType = require('./detecteType');
 
 const restrictions = new Restrictions();
 
@@ -12,14 +11,20 @@ class Projet {
     this.restrictions = restrictions.ajoute(restrictionList);
   }
 
-  getFiles() {
-    return this.fileReaderService.readdirSync(this.path);
+  getElements() {
+    return this.fileReaderService.readdirSync(this.path).map(item => {
+      return new Element(item);
+    })
   }
 
   explore() {
-    return this.getFiles().map(item => {
-      return new Element(item);
-    });
+    const elements = this.getElements();
+    elements.map(item => {
+      if (item.type == "gitignore") {
+        return false;
+      }
+    })
+    return
   }
 }
 
