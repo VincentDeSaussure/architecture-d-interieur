@@ -1,14 +1,13 @@
 const Restrictions = require('./Restrictions');
+const GitIgnore = require('./GitIgnore');
 const Element = require('./Element');
-
-const restrictions = new Restrictions();
 
 class Projet {
 
   constructor(path, fileReaderService, restrictionList) {
     this.path = __dirname + path;
     this.fileReaderService = fileReaderService;
-    this.restrictions = restrictions.ajoute(restrictionList);
+    this.restrictions = construitLesRestrictions(restrictionList);
   }
 
   getElements() {
@@ -18,14 +17,28 @@ class Projet {
   }
 
   explore() {
-    const elements = this.getElements();
+    let elements = this.getElements();
     elements.map(item => {
       if (item.type == "gitignore") {
-        return false;
+        const gitignore = new GitIgnore(this.fileReaderService, this.path);
+        this.restrictions.ajoute(gitignore.contient());
       }
-    })
-    return
+    });
+    // goo at this point
+    elements = elements.filter(item => {
+      if (!this.restrictions.totale.includes(item.name))
+        return item;
+    });
+    return elements;
   }
 }
+
+function construitLesRestrictions(restrictionList) {
+  const restrictions = new Restrictions();
+  restrictions.ajoute(restrictionList);
+  return restrictions;
+}
+
+
 
 module.exports = Projet;
