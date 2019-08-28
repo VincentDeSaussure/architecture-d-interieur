@@ -33,7 +33,10 @@ describe('Projet', () => {
         expect(result[1].name).toEqual(expectedFiles[1]);
         expect(result[1].type).toEqual(typeDElement.FILE);
       });
-    })
+    });
 
+    describe.skip("detecte un parent", () => {
+
+    });
   });
 });
