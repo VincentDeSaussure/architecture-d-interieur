@@ -1,7 +1,9 @@
+const fs = require('fs-extra');
+
 class GitIgnore {
 
-  constructor(fileReaderSystem, path) {
-    this.contenu = extracterContenu(formateLePath(path), fileReaderSystem);
+  constructor(path) {
+    this.contenu = extracterContenu(formateLePath(path));
   }
 
   contient() {
@@ -9,8 +11,8 @@ class GitIgnore {
   }
 }
 
-function extracterContenu(path, fileReaderSystem) {
-  return fileReaderSystem.readFileSync(path, 'utf-8')
+function extracterContenu(path) {
+  return fs.readFileSync(path, 'utf-8')
     .split('\/\n');
 }
 

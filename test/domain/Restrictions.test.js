@@ -1,6 +1,5 @@
 const Restrictions = require('../../domain/Restrictions');
 const GitIgnore = require('../../domain/GitIgnore');
-const fs = require('fs-extra');
 const restrictionList = require('../../model/restrictionList');
 
 describe('Restrictions', () => {
@@ -24,7 +23,7 @@ describe('Restrictions', () => {
       // given
       const expectedListeDeRestrictions = [".git", ".gitignore", ".idea"];
       const path = __dirname + '/../builder';
-      const gitgnore = new GitIgnore(fs, path);
+      const gitgnore = new GitIgnore(path);
       const restrictions = new Restrictions();
       const listeDeFichiersAIgnorerProvenantDuGitgnore = gitgnore.contient();
       // when

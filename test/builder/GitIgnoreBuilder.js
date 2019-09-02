@@ -1,14 +1,15 @@
+const fs = require('fs-extra');
+
 class GitIgnoreBuilder {
-  constructor(fs) {
-    this.fs = fs;
+  constructor() {
     this.listeAEcrire = "";
     this.path = "./test/builder/.gitignore"
   }
 
   build() {
-    this.fs.stat(this.path, (err) => {
+    fs.stat(this.path, (err) => {
       if(err) {
-        this.fs.writeFile(this.path, this.listeAEcrire, function(err) {
+        fs.writeFile(this.path, this.listeAEcrire, function(err) {
           if (err) throw err;
           else return true
         })
