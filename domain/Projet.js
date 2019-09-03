@@ -1,7 +1,7 @@
+const fs = require('fs-extra');
 const Restrictions = require('./Restrictions');
 const GitIgnore = require('./GitIgnore');
-const Element = require('./Element');
-const fs = require('fs-extra');
+const genereUnObjetSelonLeTypeDElement = require('../adaptateur/genereUnObjetSelonLeTypeDElement');
 
 class Projet {
 
@@ -13,7 +13,11 @@ class Projet {
 
   initialiseLesElements() {
     return fs.readdirSync(this.path).map(item => {
-      return new Element(item);
+      const data = {
+        nom: item,
+        path: this.path
+      };
+      return genereUnObjetSelonLeTypeDElement(data);
     })
   }
 
@@ -27,9 +31,9 @@ class Projet {
 
   ajouteLesRestrictionsDesGitIgnore(elements) {
     elements.map(item => {
-      if (item.type == "gitignore") {
-        const gitignore = new GitIgnore(this.path);
-        this.restrictions.ajoute(gitignore.contient());
+      if (item instanceof GitIgnore) {
+        console.log(item.contient());
+        this.restrictions.ajoute(item.contient());
       }
     });
   }
@@ -39,14 +43,6 @@ class Projet {
       if (!this.restrictions.totale.includes(item.name))
         return item;
     }));
-  }
-
-  detecteUnElementDeTypeDirectory(elements) {
-    elements.map(item => {
-      if (item.type == typeDElement.DIRECTORY) {
-        const directory = new Projet()
-      }
-    })
   }
 
   explore() {

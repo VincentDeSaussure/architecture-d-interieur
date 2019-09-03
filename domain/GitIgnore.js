@@ -24,7 +24,7 @@ function extracterContenu(path) {
 }
 
 function formateLePath(path, nom) {
-  return path + '/' + nom;
+  return path + nom;
 }
 
 module.exports = GitIgnore;

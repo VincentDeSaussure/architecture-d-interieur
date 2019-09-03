@@ -1,13 +1,9 @@
 class Element {
   constructor(data) {
-    this.id = data.counter;
     this.nom = data.nom;
-    this.path = data.path;
+    this.path = data.path + '/';
   }
 
-  getId() {
-    return this.id;
-  }
   getNom() {
     return this.nom;
   }
