@@ -28,4 +28,21 @@ describe('Projet', () => {
       });
     });
   });
+
+  describe('explore', () => {
+    it("retourne une liste d'élément dont le type et le nom sont renseignés, en considerant les restriction du gitignore", () => {
+      // given
+      const expectedFiles = ["domain", "file1.js"];
+      const path = '/../test/directory-for-test/directory-with-gitignore';
+      const projet1 = new Projet(path, restrictionList);
+      // when
+      const result = projet1.explore();
+      // then
+      expect(result.length).toEqual(2);
+      expect(result[0].getNom()).toEqual(expectedFiles[0]);
+      expect(result[0] instanceof Dossier).toBeTruthy();
+      expect(result[1].getNom()).toEqual(expectedFiles[1]);
+      expect(result[1] instanceof Fichier).toBeTruthy();
+    });
+  });
 });

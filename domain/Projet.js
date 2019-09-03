@@ -8,17 +8,17 @@ class Projet {
   constructor(path, restrictionList) {
     this.path = __dirname + path;
     this.restrictions = construitLesRestrictions(restrictionList);
-    this.elements = this.initialiseLesElements();
+    this.elements = [];
   }
 
   initialiseLesElements() {
-    return fs.readdirSync(this.path).map(item => {
+    this.setElements(fs.readdirSync(this.path).map(item => {
       const data = {
         nom: item,
         path: this.path
       };
       return genereUnObjetSelonLeTypeDElement(data);
-    })
+    }));
   }
 
   getElements() {
@@ -32,7 +32,6 @@ class Projet {
   ajouteLesRestrictionsDesGitIgnore(elements) {
     elements.map(item => {
       if (item instanceof GitIgnore) {
-        console.log(item.contient());
         this.restrictions.ajoute(item.contient());
       }
     });
@@ -40,12 +39,13 @@ class Projet {
 
   filtreSelonLesRestrictions(elements) {
     this.setElements(elements.filter(item => {
-      if (!this.restrictions.totale.includes(item.name))
+      if (!this.restrictions.totale.includes(item.nom))
         return item;
     }));
   }
 
   explore() {
+    this.initialiseLesElements();
     this.ajouteLesRestrictionsDesGitIgnore(this.elements);
     this.filtreSelonLesRestrictions(this.elements);
     return this.getElements();
