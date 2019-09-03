@@ -23,7 +23,14 @@ describe('Restrictions', () => {
       // given
       const expectedListeDeRestrictions = [".git", ".gitignore", ".idea"];
       const path = __dirname + '/../builder';
-      const gitgnore = new GitIgnore(path);
+      const nom = '.gitignore';
+      const id = 1;
+      const data = {
+        id: id,
+        nom: nom,
+        path: path
+      }
+      const gitgnore = new GitIgnore(data);
       const restrictions = new Restrictions();
       const listeDeFichiersAIgnorerProvenantDuGitgnore = gitgnore.contient();
       // when

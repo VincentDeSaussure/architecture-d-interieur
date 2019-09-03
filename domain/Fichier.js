@@ -1,10 +1,10 @@
 const Element = require("./Element");
 
-class Dossier extends Element {
+class Fichier extends Element {
 
   constructor(data) {
     super(data);
   }
 }
 
-module.exports = Dossier;
+module.exports = Fichier;

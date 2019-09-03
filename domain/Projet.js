@@ -3,7 +3,7 @@ const GitIgnore = require('./GitIgnore');
 const Element = require('./Element');
 const fs = require('fs-extra');
 
-class Directory {
+class Projet {
 
   constructor(path, restrictionList) {
     this.path = __dirname + path;
@@ -44,7 +44,7 @@ class Directory {
   detecteUnElementDeTypeDirectory(elements) {
     elements.map(item => {
       if (item.type == typeDElement.DIRECTORY) {
-        const directory = new Directory()
+        const directory = new Projet()
       }
     })
   }
@@ -64,4 +64,4 @@ function construitLesRestrictions(restrictionList) {
 
 
 
-module.exports = Directory;
+module.exports = Projet;

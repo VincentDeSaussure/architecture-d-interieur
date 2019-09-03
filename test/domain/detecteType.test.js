@@ -17,7 +17,7 @@ describe("detecteType", () => {
     // when
     const result = detecteType(directory);
     // then
-    expect(result).toBe(typeDElement.DIRECTORY);
+    expect(result).toBe(typeDElement.DOSSIER);
   });
 
   it("file", () => {
@@ -26,6 +26,6 @@ describe("detecteType", () => {
     // when
     const result = detecteType(file);
     // then
-    expect(result).toBe(typeDElement.FILE);
+    expect(result).toBe(typeDElement.FICHIER);
   });
 })

@@ -1,7 +1,7 @@
 const typeDElement = {
   GITIGNORE: "gitignore",
-  DIRECTORY: "directory",
-  FILE: "file"
+  DOSSIER: "directory",
+  FICHIER: "file"
 }
 
 module.exports = typeDElement;

@@ -4,9 +4,9 @@ function detecteType(element) {
   if(detecteGitIgnore(element)) {
     return typeDElement.GITIGNORE;
   } else if( detecteDirectory(element)) {
-    return typeDElement.DIRECTORY;
+    return typeDElement.DOSSIER;
   } else {
-    return typeDElement.FILE;
+    return typeDElement.FICHIER;
   }
 }
 

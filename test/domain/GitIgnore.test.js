@@ -8,12 +8,19 @@ describe('GitIgnore', () => {
   gitIgnoreFileForTest.assigneLaListeAEcrire(expectedListeDansLeGitIgnore);
   gitIgnoreFileForTest.build();
   const path = __dirname + '/../builder';
+  const nom = '.gitignore';
+  const id = 1;
+  const data = {
+    id: id,
+    nom: nom,
+    path: path
+  }
 
   describe('contient', () => {
     it('doit retourner les informations contenu dans le gitignore', () => {
       // given
       const expectedList = expectedListeDansLeGitIgnore;
-      const gitIgnore = new GitIgnore(path);
+      const gitIgnore = new GitIgnore(data);
       //when
       const result = gitIgnore.contient();
       // then

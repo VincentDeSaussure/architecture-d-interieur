@@ -1,9 +1,16 @@
 const fs = require('fs-extra');
+const Element = require("./Element");
 
-class GitIgnore {
+class GitIgnore extends Element{
 
-  constructor(path) {
-    this.contenu = extracterContenu(formateLePath(path));
+  constructor(data) {
+    super(data);
+    this.contenu = extracterContenu(
+      formateLePath(
+        super.getPath(),
+        super.getNom()
+      )
+    );
   }
 
   contient() {
@@ -16,8 +23,8 @@ function extracterContenu(path) {
     .split('\/\n');
 }
 
-function formateLePath(path) {
-  return path + '/.gitignore';
+function formateLePath(path, nom) {
+  return path + '/' + nom;
 }
 
 module.exports = GitIgnore;
