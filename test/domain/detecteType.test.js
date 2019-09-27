@@ -1,5 +1,5 @@
-const detecteType = require("../../domain/detecteType");
-const typeDElement = require("../../model/typeDElement");
+const detecteType = require("../../src/domain/detecteType");
+const typeDElement = require("../../src/model/typeDElement");
 
 describe("detecteType", () => {
   it("gitignore", () => {

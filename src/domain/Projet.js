@@ -5,9 +5,9 @@ const genereUnObjetSelonLeTypeDElement = require('../adaptateur/genereUnObjetSel
 
 class Projet {
 
-  constructor(path, restrictionList) {
+  constructor(path) {
     this.path = __dirname + path;
-    this.restrictions = construitLesRestrictions(restrictionList);
+    this.restrictions = new Restrictions();
     this.elements = [];
   }
 
@@ -48,16 +48,6 @@ class Projet {
     this.initialiseLesElements();
     this.ajouteLesRestrictionsDesGitIgnore(this.elements);
     this.filtreSelonLesRestrictions(this.elements);
-    return this.getElements();
   }
 }
-
-function construitLesRestrictions(restrictionList) {
-  const restrictions = new Restrictions();
-  restrictions.ajoute(restrictionList);
-  return restrictions;
-}
-
-
-
 module.exports = Projet;

@@ -1,8 +1,7 @@
-const restrictionList = require('../../model/restrictionList');
-const Projet = require('../../domain/Projet');
-const Dossier = require('../../domain/Dossier');
-const Fichier = require('../../domain/Fichier');
-const GitIgnore = require('../../domain/GitIgnore');
+const Projet = require('../../src/domain/Projet');
+const Dossier = require('../../src/domain/Dossier');
+const Fichier = require('../../src/domain/Fichier');
+const GitIgnore = require('../../src/domain/GitIgnore');
 
 describe('Projet', () => {
   describe('initialise les elements', () => {
@@ -10,8 +9,8 @@ describe('Projet', () => {
       it("avec gitignore", () => {
         // given
         const expectedFiles = [".gitignore", "domain", "file1.js", "node_modules_stub"];
-        const path = '/../test/directory-for-test/directory-with-gitignore';
-        const projet1 = new Projet(path, restrictionList);
+        const path = '/../../test/directory-for-test/directory-with-gitignore';
+        const projet1 = new Projet(path);
         // when
         projet1.initialiseLesElements();
         const result = projet1.getElements();
@@ -33,10 +32,11 @@ describe('Projet', () => {
     it("retourne une liste d'élément dont le type et le nom sont renseignés, en considerant les restriction du gitignore", () => {
       // given
       const expectedFiles = ["domain", "file1.js"];
-      const path = '/../test/directory-for-test/directory-with-gitignore';
-      const projet1 = new Projet(path, restrictionList);
+      const path = '/../../test/directory-for-test/directory-with-gitignore';
+      const projet1 = new Projet(path);
       // when
-      const result = projet1.explore();
+      projet1.explore();
+      const result = projet1.getElements();
       // then
       expect(result.length).toEqual(2);
       expect(result[0].getNom()).toEqual(expectedFiles[0]);

@@ -1,8 +1,8 @@
-const genereUnObjetSelonLeTypeDElement = require("../../adaptateur/genereUnObjetSelonLeTypeDElement");
-const Fichier = require("../../domain/Fichier");
-const Dossier = require("../../domain/Dossier");
-const GitIgnore = require("../../domain/GitIgnore");
-const Element = require("../../domain/Element");
+const genereUnObjetSelonLeTypeDElement = require("../../src/adaptateur/genereUnObjetSelonLeTypeDElement");
+const Fichier = require("../../src/domain/Fichier");
+const Dossier = require("../../src/domain/Dossier");
+const GitIgnore = require("../../src/domain/GitIgnore");
+const Element = require("../../src/domain/Element");
 
 let counter = 0;
 describe("genereUnObjetSelonLeTypeDElement", () => {

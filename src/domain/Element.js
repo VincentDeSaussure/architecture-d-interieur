@@ -1,7 +1,7 @@
 class Element {
   constructor(data) {
     this.nom = data.nom;
-    this.path = data.path + '/';
+    this.path = data.path + '/' + data.nom;
   }
 
   getNom() {

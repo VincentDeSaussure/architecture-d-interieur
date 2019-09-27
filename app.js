@@ -1,5 +1,5 @@
-const restrictionList = require('./model/restrictionList');
-const ExplorerUnProjet = require('./usecase/ExplorerUnProjet');
+const restrictionList = require('./src/model/restrictionList');
+const ExplorerUnProjet = require('./src/usecase/ExplorerUnProjet');
 
 const path = __dirname + '/../.';
 const explorerUnProjet = new ExplorerUnProjet(path, restrictionList);

@@ -1,4 +1,4 @@
-const GitIgnore = require('../../domain/GitIgnore');
+const GitIgnore = require('../../src/domain/GitIgnore');
 const GitIgnoreBuilder = require('../builder/GitIgnoreBuilder');
 
 describe('GitIgnore', () => {

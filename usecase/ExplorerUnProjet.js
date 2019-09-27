@@ -1,6 +1,0 @@
-class ExplorerUnProjet {
-
-  execute() {
-
-  }
-}

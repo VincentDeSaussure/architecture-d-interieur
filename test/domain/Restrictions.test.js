@@ -1,6 +1,5 @@
-const Restrictions = require('../../domain/Restrictions');
-const GitIgnore = require('../../domain/GitIgnore');
-const restrictionList = require('../../model/restrictionList');
+const Restrictions = require('../../src/domain/Restrictions');
+const GitIgnore = require('../../src/domain/GitIgnore');
 
 describe('Restrictions', () => {
 
@@ -11,7 +10,7 @@ describe('Restrictions', () => {
       const restrictions = new Restrictions();
       const listeDeFichiersAIgnorer = ['fichierAIgnorer.test'];
       // when
-      restrictions.ajoute(restrictionList);
+      restrictions.ajoute(expectedListeDeRestrictions);
       restrictions.ajoute(listeDeFichiersAIgnorer);
       const result  = restrictions.result();
 
@@ -21,7 +20,7 @@ describe('Restrictions', () => {
 
     it("des restrictions à partir d'un gitignore", () => {
       // given
-      const expectedListeDeRestrictions = [".git", ".gitignore", ".idea"];
+      const expectedListeDeRestrictions = [".git", ".idea", ".gitignore"];
       const path = __dirname + '/../builder';
       const nom = '.gitignore';
       const id = 1;
@@ -34,7 +33,6 @@ describe('Restrictions', () => {
       const restrictions = new Restrictions();
       const listeDeFichiersAIgnorerProvenantDuGitgnore = gitgnore.contient();
       // when
-      restrictions.ajoute(restrictionList);
       restrictions.ajoute(listeDeFichiersAIgnorerProvenantDuGitgnore);
       const result  = restrictions.result();
 
@@ -47,7 +45,7 @@ describe('Restrictions', () => {
       const expectedListeDeRestrictions = [".git", ".gitignore"]
 
       const restrictions = new Restrictions();
-      restrictions.ajoute(restrictionList);
+      restrictions.ajoute(expectedListeDeRestrictions);
       const listeDeDoublons = [".gitignore", ".git"]
       restrictions.ajoute(listeDeDoublons);
       // when
