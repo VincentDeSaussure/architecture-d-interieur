@@ -9,7 +9,7 @@ class App {
   run() {
     const contenu = [];
     let files = recupereLesFichiers(this.path, contenu);
-    files = retireLePathDesElements(files, this.path);
+    files = retireLeDirectoryPathDesElements(files, this.path);
     return files;
   }
 }
@@ -28,7 +28,7 @@ function recupereLesFichiers(path, contenu) {
   return contenu;
 }
 
-function retireLePathDesElements(files, path) {
+function retireLeDirectoryPathDesElements(files, path) {
   return files.map(file => {
     return file.replace(path, '');
   })
