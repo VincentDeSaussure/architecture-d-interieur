@@ -34,4 +34,13 @@ function retireLeDirectoryPathDesElements(files, path) {
   })
 }
 
+function recupereLesDependancesDUnElement(element) {
+  return
+
+}
+
+function creerElementDepuisUnNomDeFichier(fileName) {
+
+}
+
 module.exports = App;

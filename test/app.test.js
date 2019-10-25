@@ -1,4 +1,5 @@
-const App = require('../src/App')
+const App = require('../src/App');
+const Element = require('../src/domain/Fichier');
 
 describe("app", () => {
   describe("when directory is compose of subdirectory", () => {
