@@ -8,6 +8,7 @@ describe("app", () => {
       const expectedListOfFile = [
         "/.gitignore",
         "/domain/ElementDuProjet.js",
+        "/domain/ElementDuProjetAvecDeuxDependances.js",
         "/domain/Projet.js",
         "/index.js",
         "/usecase/enregistrer.js",

@@ -23,15 +23,4 @@ describe("Adaptateur | fichierFromPath", () => {
       expect(result).toEqual(expectedNom)
     });
   });
-  describe("extraitLesDependancesDuFichier", () => {
-    it("return les dependances du fichier depuis le chemin absolu", () => {
-      // given
-      const cheminAbsolu = __dirname + "/../directory-for-test/domain/ElementDuProjet.js";
-      const expectedDependances = [];
-      // when
-      const result = fichierFromPathAdaptateur.extraitLesDependancesDuFichier(cheminAbsolu);
-      // then
-      expect(result).toEqual(expectedDependances);
-    });
-  });
 });

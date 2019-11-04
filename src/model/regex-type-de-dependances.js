@@ -1,5 +1,5 @@
 const regexTypeDeDependances = Object.freeze({
-  REQUIRE: "\\\\"
+  REQUIRE_JS: "\\\\"
 });
 
 module.exports = regexTypeDeDependances;
